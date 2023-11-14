@@ -13,11 +13,19 @@ TypeScriptで実装しました。
 // headerを考慮してスムーススクロールする
 //------------------------------
 const headerHeight = 150;
+
 function scrollToSection(targetId: string) {
+  if (!targetId || targetId === '#') {
+    // targetIdが空または#の場合はトップにスクロール
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+    return;
+  }
   const targetSection = document.getElementById(targetId);
   if (targetSection) {
-    const targetSectionTop = targetSection.offsetTop -  headerHeight;
-
+    const targetSectionTop = targetSection.offsetTop - headerHeight;
     window.scrollTo({
       top: targetSectionTop,
       behavior: 'smooth',
