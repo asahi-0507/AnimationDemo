@@ -7,6 +7,7 @@
 雲の画像はこちらから利用 https://pixabay.com/ja/users/alienized-11040952/
 
 # スムーススクロール
+TypeScriptで実装しました。
 ```js
 //------------------------------
 // headerを考慮してスムーススクロールする
@@ -42,6 +43,10 @@ JQueryで実装しました。
 }
 .fadein-bottom{
   transform: translate(0,30px);
+}
+.scrollin{
+  opacity: 1 !important;
+  transform: translate(0, 0) !important;
 }
 ```
 

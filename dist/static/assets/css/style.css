@@ -230,6 +230,10 @@ img {
 .fadein.fadein-bottom {
   transform: translate(0, 30px);
 }
+.fadein.scrollin {
+  opacity: 1 !important;
+  transform: translate(0, 0) !important;
+}
 
 #loading-wrapper {
   position: fixed;
@@ -361,6 +365,9 @@ img {
 }
 .header .pcNav .item:not(:first-of-type) {
   margin-left: 2em;
+}
+.header .pcNav .item:hover {
+  opacity: 0.5;
 }
 
 .spMenu {

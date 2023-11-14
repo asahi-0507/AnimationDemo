@@ -39,6 +39,9 @@
       &:not(:first-of-type) {
         margin-left: 2em;
       }
+      &:hover {
+        opacity: 0.5;
+      }
     }
   }
 }
