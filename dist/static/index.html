@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>AnimationDemo</title>
+  <link rel="icon" href="./assets/img/favicon.ico" />
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="loading-wrapper">
+    <div class="loader"></div>
+    <p>Loading...</p>
+  </div>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo"><a href="#"><img src="/assets/img/logo.png" alt="サイトの名前"></a></h1>
+      <!-- pc -->
+      <ul class="pcNav">
+        <li class="item"><a href="#reason">reason</a></li>
+        <li class="item"><a href="#voice">voice</a></li>
+        <li class="item"><a href="#overview">overview</a></li>
+      </ul>
+      <!-- sp -->
+      <div class="spMenu">
+        <input type="checkbox" id="btnCheck">
+        <label for="btnCheck" class="bgClick"></label>
+        <label for="btnCheck" class="hamBtn"><span class="bg"></span><span class="line"></span></label>
+        <div class="content">
+          <ul class="spNav">
+            <li class="item"><a href="#reason">reason</a></li>
+            <li class="item"><a href="#voice">voice</a></li>
+            <li class="item"><a href="#overview">overview</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="sectionOverWrap">
+    <section class="mv fadein fadein-bottom">
+      <div class="container">
+        <picture>
+          <source srcset="./assets/img/pc_mv.png" media="(min-width: 576px)">
+          <img src="./assets/img/sp_mv.png" alt="メインビジュアル画像">
+        </picture>
+        <div class="content">
+          <p class="text">話して学ぼう！</p>
+          <p class="text">BBB英会話スクール</p>
+          <button class="btn">無料体験はこちら</button>
+        </div>
+        <img class="cloud" src="./assets/img/cloud.png" alt="雲">
+      </div>
+    </section>
+
+    <section id="reason" class="reasonSection">
+      <div class="container">
+        <h2 class="heading fadein fadein-bottom">BBBが選ばれる理由</h2>
+        <div class="contentWrap">
+          <div class="content left fadein fadein-bottom">
+            <img class="imgPc" src="./assets/img/icon/icon-pc.png" alt="アイコン">
+            <div class="textWrap">
+              <h3 class="title">オンライン対応</h3>
+              <p class="text">24時間いつでも受講できる！</p>
+            </div>
+          </div>
+          <div class="content right fadein fadein-bottom">
+            <img class="imgTeacher" src="./assets/img/icon/icon-teacher.png" alt="アイコン">
+            <div class="textWrap">
+              <h3 class="title">講師はネイティブ</h3>
+              <p class="text">お気に入りの講師が自由に選べる！</p>
+            </div>
+          </div>
+          <!-- <div class="waveTop"></div>
+          <div class="waveBottom"></div> -->
+        </div>
+      </div>
+    </section>
+
+    <section id="voice" class="voiceSection">
+      <div class="container">
+        <h2 class="heading fadein fadein-bottom">受講生の声</h2>
+        <div class="content fadein fadein-bottom">
+          <div class="contentLeft">
+            <div class="img"><img class="imgTeacher" src="./assets/img/icon/icon-teacher.png" alt="アイコン"></div>
+            <p class="name">○○○さん</p>
+            <p class="name">大学生</p>
+          </div>
+          <div class="contentRight">
+            <div class="text">
+              <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+              <span class="accordionTitle"></span>
+              <p class="accordionContent">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            </div>
+          </div>
+        </div>
+        <div class="content fadein fadein-bottom">
+          <div class="contentLeft">
+            <div class="img"><img class="imgTeacher" src="./assets/img/icon/icon-teacher.png" alt="アイコン"></div>
+            <p class="name">○○○さん</p>
+            <p class="name">会社員</p>
+          </div>
+          <div class="contentRight">
+            <div class="text">
+              <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+              <span class="accordionTitle"></span>
+              <p class="accordionContent">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            </div>
+          </div>
+        </div>
+        <div class="content fadein fadein-bottom">
+          <div class="contentLeft">
+            <div class="img"><img class="imgTeacher" src="./assets/img/icon/icon-teacher.png" alt="アイコン"></div>
+            <p class="name">○○○さん</p>
+            <p class="name">自営業</p>
+          </div>
+          <div class="contentRight">
+            <div class="text">
+              <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+              <span class="accordionTitle"></span>
+              <p class="accordionContent">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview" class="overviewSection">
+      <div class="container">
+        <h2 class="heading fadein fadein-bottom">スクールの概要</h2>
+        <div class="contentWrap">
+          <div class="content fadein fadein-bottom">
+            <h3 class="title">レッスン内容</h3>
+            <p class="enTitle">lesson</p>
+            <p class="text">テキストテキストテキストテキスト
+              テキストテキストテキストテキスト
+              テキスト</p>
+          </div>
+          <div class="content fadein fadein-bottom">
+            <h3 class="title">レッスン内容</h3>
+            <p class="enTitle">lesson</p>
+            <p class="text">テキストテキストテキストテキスト
+              テキストテキストテキストテキスト
+              テキスト</p>
+          </div>
+          <div class="content fadein fadein-bottom">
+            <h3 class="title">レッスン内容</h3>
+            <p class="enTitle">lesson</p>
+            <p class="text">テキストテキストテキストテキスト
+              テキストテキストテキストテキスト
+              テキスト</p>
+          </div>
+          <div class="content fadein fadein-bottom">
+            <h3 class="title">レッスン内容</h3>
+            <p class="enTitle">lesson</p>
+            <p class="text">テキストテキストテキストテキスト
+              テキストテキストテキストテキスト
+              テキスト</p>
+          </div>
+        </div>
+        <span class="redBall"></span><span class="redBall"></span><span class="redBall"></span><span class="redBall"></span><span class="redBall"></span><span class="redBall"></span>
+      </div>
+    </section>
+
+    <section class="swiperSection">
+      <div class="swiper swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="./assets/img/sp_mv.png" alt="羊">
+          </div>
+          <div class="swiper-slide">
+            <img src="./assets/img/sp_mv.png" alt="羊">
+          </div>
+          <div class="swiper-slide">
+            <img src="./assets/img/pc_mv.png" alt="羊">
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
+
+    <section class="leadSection">
+      <div class="content">
+        <p class="text fadein fadein-bottom">まずは無料で、BBBの英会話を試してみませんか？</p>
+        <p class="subText fadein fadein-bottom">今なら初月のレッスンを特別価格で受講できる割引クーポンをプレゼント！</p>
+        <button class="btn fadein fadein-bottom">無料体験に申し込む</button>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="copyright">2023...</p>
+    </div>
+  </footer>
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>

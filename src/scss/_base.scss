@@ -1,77 +1,116 @@
-# Sample Site - 20231114
+@use 'settings';
 
-# 【概要】
-サンプルサイトでアニメーション実装しました。
-フリーでご用意くださっているデザインカンプを一部修正して利用 https://code-jump.com/
-羊の画像はこちらから利用 https://pixabay.com/ja/users/165106-165106/
-雲の画像はこちらから利用 https://pixabay.com/ja/users/alienized-11040952/
+html {
+  scroll-behavior: smooth;
+}
 
-# スムーススクロール
-```js
-//------------------------------
-// headerを考慮してスムーススクロールする
-//------------------------------
-const headerHeight = 150;
-function scrollToSection(targetId: string) {
-  const targetSection = document.getElementById(targetId);
-  if (targetSection) {
-    const targetSectionTop = targetSection.offsetTop -  headerHeight;
+body {
+  font-size: 16px;
+  line-height: 1.5em;
+  background-color: var(--color-basic-bg);
+  color: var(--color-basic-text);
+  font-family: var(--font-NotoSans);
+  width: min(100%, 1440px);
+  margin-left: auto;
+  margin-right: auto;
+}
 
-    window.scrollTo({
-      top: targetSectionTop,
-      behavior: 'smooth',
-    });
+* {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+a,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  vertical-align: top!important;
+}
+
+.heading {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--margin-section-wave-sp);
+  position: relative;
+  font-size: var(--size-head);
+  &::after {
+    position: absolute;
+    content: "";
+    width: 40%;
+    height: 2px;
+    left: 50%;
+    bottom: -100%;
+    translate: -50% 0;
+    background-color: var(--color-basic-text);
   }
 }
-```
 
-# スライダー
-swiperで実装しました。
+.btn {
+  display: block;
+  position: relative;
+  background-color: var(--color-accent);
+  color: var(--color-second-text);
+  line-height: 3em;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  box-shadow: 5px 5px var(--color-accent-shadow);
+  border-radius: 12px;
+  overflow:hidden;
+  &:hover {
+    transition: all 0.5s;
+    transform: translate(5px,5px);
+    box-shadow: none;
+  }
+  &::after {
+    content:"";
+    height:100%;
+    width:30px;
+    position:absolute;
+    top:-180px;
+    left:0;
+    background-color: #fff;
+    opacity:0;
+    transform: rotate(45deg);
+    animation: reflection 2s ease-in-out infinite;
+  }
+  @keyframes reflection {
+    0% { -webkit-transform: scale(0) rotate(45deg); opacity: 0; }
+    80% { -webkit-transform: scale(0) rotate(45deg); opacity: 0.5; }
+    81% { -webkit-transform: scale(4) rotate(45deg); opacity: 1; }
+    100% { -webkit-transform: scale(50) rotate(45deg); opacity: 0; }
+  }
+}
 
-# ふわっと出現
-JQueryで実装しました。
-```html
-<div class="fadein fadein-bottom">コンテンツ</div>
-```
-
-```css
 .fadein {
   opacity: 0;
   transform: translate(0,0);
   transition: all 1.5s;
+  &.fadein-bottom{
+    transform: translate(0,30px);
+  }
+  // &.fadein-left{
+  //   transform: translate(-30px,0);
+  // }
+  // &.fadein-right{
+  //   transform: translate(30px,0);
+  // }
+  // &.fadein-up{
+  //   transform: translate(0,-30px);
+  // }
+  // &.scrollin{
+  //   opacity: 1 !important;
+  //   transform: translate(0, 0) !important;
+  // }
 }
-.fadein-bottom{
-  transform: translate(0,30px);
-}
-```
 
-```js
-//------------------------------
-// ふわっと出現させる
-//------------------------------
-$(window).scroll(function (){
-  $('.fadein').each(function(){
-    var elemPos = $(this).offset().top,
-    scroll = $(window).scrollTop(),
-    windowHeight = $(window).height();
-
-      if (scroll > elemPos - windowHeight + 150){
-        $(this).addClass('scrollin');
-      }
-  });
-});
-```
-
-# ローディング
-JQueryで実装しました。
-```html
-<div id="loading-wrapper">
-  <div class="loader"></div>
-  <p>Loading...</p>
-</div>
-```
-
-```css
 #loading-wrapper {
   position: fixed;
   top: 0;
@@ -158,87 +197,3 @@ JQueryで実装しました。
   opacity: 0;
   visibility: hidden;
 }
-```
-
-```js
-//------------------------------
-// loading
-//------------------------------
-$(window).on('load',function(){
-  $("#loading-wrapper").addClass("completed")
-});
-```
-
-# アコーディオン
-JQueryで実装しました。
-```html
-<div class="text">
-  <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-  <span class="accordionTitle"></span>
-  <p class="accordionContent">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-</div>
-```
-
-```css
-.accordionTitle {
-  display: block;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  text-decoration: underline;
-  &::before {
-    content: "全文を表示";
-  }
-  &.open {
-    &::before {
-      content: "閉じる";
-    }
-  }
-}
-.accordionContent {
-  display: none;
-}
-```
-
-```js
-//------------------------------
-// 1つだけが開くアコーディオン
-//------------------------------
-// タイトルをクリックすると
-$(".accordionTitle").on("click", function (this: any) {
-  // クリックしたタイトル以外のopenクラスを外す(－から＋にする)
-  $(".accordionTitle").not(this).removeClass("open");
-  // クリックしたタイトル以外のコンテンツを閉じる
-  $(".accordionTitle").not(this).next().slideUp(300);
-  // クリックしたタイトルにopenクラスを付け外しして＋と－を切り替える
-  $(this).toggleClass("open");
-  // クリックしたタイトルの次の要素(コンテンツ)を開閉
-  $(this).next().slideToggle(300);
-});
-```
-
-# 装飾を動かし続ける
-CSSで実装しました。
-```html
-<img class="cloud" src="./assets/img/cloud.png" alt="雲">
-```
-
-```css
-.cloud {
-  display: none;
-  @include mixin.mq('sm','min'){
-    display: inline;
-    position: absolute;
-    width: 15%;
-    height: auto;
-    top: 5%;
-    right: 3%;
-    animation: cloudAnimation 3s linear infinite;
-  }
-}
-@keyframes cloudAnimation {
-  0% { transform: translateY(0) }
-  33.33333% { transform: translate(-4px, -4px) }
-  66.66667% { transform: translateY(-2px, -2px) }
-  100% { transform: translateY(0) }
-}
-```

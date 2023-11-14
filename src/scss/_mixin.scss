@@ -1,0 +1,22 @@
+/*====================================
+メディアクエリ設定
+====================================*/
+$mq-breakpoints: (
+  'xs': 321px,	// 極狭sp
+  'sm': 576px,	// sp
+  'md': 768px,	// sp
+  'lg': 1024px,	// pc/tab
+	'xl-2': 1200px,	// pc分割(フィロソフィーの三本柱図用)
+  'xl': 1360px,	// pc
+  'xxl': 1920px, // desktop pc
+) !default;
+
+@mixin mq($breakpoint: md, $rule: min) {
+  $breakpoint: map-get($mq-breakpoints, $breakpoint);
+  @if $rule == max {
+    $breakpoint: $breakpoint - 1px;
+  }
+  @media screen and (#{$rule}-width: $breakpoint) {
+    @content;
+  }
+}

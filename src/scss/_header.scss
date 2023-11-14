@@ -1,0 +1,177 @@
+@charset "UTF-8";
+@use 'settings';
+@use 'mixin';
+
+.header {
+  z-index: 3;
+  position: fixed;
+  max-width: 1440px;
+  width: 100%;
+  height: 100px;
+  @include mixin.mq('sm','min'){
+    height: 120px;
+  }
+  background-color: var(--color-basic-bg);
+  padding-right: var(--margin-container);
+  padding-left: var(--margin-container);
+  .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    width: 100px;
+    height: auto;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .pcNav {
+    display: none;
+    font-size: var(--size-nav);
+    @include mixin.mq('sm','min'){
+      display: flex;
+    }
+    .item {
+      &:not(:first-of-type) {
+        margin-left: 2em;
+      }
+    }
+  }
+}
+
+// ハンバーガーメニュー
+.spMenu {
+  display: block;
+  @include mixin.mq('sm', 'min') {
+    display: none;
+  }
+  .hamBtn {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    display: flex;
+    height: 50px;
+    width: 50px;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    .bg {
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-accent);
+      border-radius: 100%;
+    }
+    .line {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 30px;
+      border-radius: 3px;
+      background-color: var(--color-basic-bg);
+      position: absolute;
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        height: 2px;
+        width: 30px;
+        border-radius: 3px;
+        background-color: var(--color-basic-bg);
+        position: absolute;
+      }
+      &::before {
+        bottom: 6px;
+      }
+      &::after {
+        top: 6px;
+      }
+    }
+  }
+
+  .bgClick {
+    z-index: 9997;
+    position: absolute;
+    top: 100px;
+    left: -101%;
+    width: 100%;
+    height: calc(100svh - 100px);
+    background-color: var(--color-mask);
+    visibility: hidden;
+    transition: all 0.1s; /*アニメーション設定*/
+  }
+
+  #btnCheck {
+    display: none;
+    &:checked ~ .hamBtn {
+      .line {
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0
+        ); /*メニューオープン時は真ん中の線を透明にする*/
+        &::before {
+          bottom: 0;
+          transform: rotate(30deg);
+          transition: all 0.3s; /*アニメーション設定*/
+        }
+        &::after {
+          top: 0;
+          transform: rotate(-30deg);
+          transition: all 0.3s; /*アニメーション設定*/
+        }
+      }
+    }
+    &:checked ~ .bgClick {
+      left: 0;
+      visibility: visible;
+    }
+    &:checked ~ .content {
+      left: 0;
+      visibility: visible; /*メニューを画面内へ*/
+    }
+  }
+
+  .content {
+    z-index: 9998;
+    position: fixed;
+    top: 100px;
+    left: -101%; /*leftの値を変更してメニューを画面外へ*/
+    padding: 15px 25px 15px;
+    width: 75%;
+    min-width: 300px;
+    height: calc(100svh - 100px);
+    background-color: var(--color-accent);
+    visibility: hidden;
+    transition: all 0.1s; /*アニメーション設定*/
+  }
+
+  .spNav {
+    z-index: 1;
+    position: relative;
+    margin-left: 0;
+    margin-right: auto;
+    width: 100%;
+    color: var(--color-second-text);
+  }
+
+  .item {
+    position: relative;
+    &:not(:first-of-type) {
+      margin-top: 15px;
+    }
+    &::before {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: -7.5px;
+      width: 100%;
+      height: 1px;
+      background-color: var(--color-mask);
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@charset 'utf-8';
+
+/*========== foundation ==========*/
+@use 'reset';
+@use 'base';
+/*========== modules ==========*/
+@use 'header';
+@use 'top';
+@use 'footer';

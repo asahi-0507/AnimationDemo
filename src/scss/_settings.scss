@@ -1,0 +1,31 @@
+@use 'sass:math';
+
+:root {
+  /*====================================
+  フォント設定
+  ====================================*/
+  // フォント
+  --font-NotoSans: 'Noto Sans JP', sans-serif;
+
+  //カラー（基本）
+  --color-basic-bg: #ffffff; //背景白
+  --color-second-bg: #cccccc; //背景グレー
+  --color-third-bg: #def6ff; //背景水色
+  --color-basic-text: #000000; // テキスト黒
+  --color-second-text: #ffffff; // テキスト白
+  --color-accent: #ff0000; // アクセント赤
+  --color-accent-shadow: #580000; // アクセントの影
+  --color-mask: rgb(0, 0, 0, 0.3); // マスク(薄い黒)
+
+  // フォントサイズ
+  --size-head: clamp(1.5rem, 1.333rem + 0.741vw, 2rem);// 24-32
+  --size-basic: clamp(0.75rem, 0.667rem + 0.37vw, 1rem);// 12-16
+  --size-mini: clamp(0.75rem, 0.708rem + 0.185vw, 0.875rem);// 12-14
+  --size-nav: 14px;
+
+  //margin, padding
+  --margin-container: clamp(1.563rem, 1.042rem + 2.315vw, 3.125rem);// 25-50
+  --margin-section: clamp(3.125rem, 2.604rem + 2.315vw, 4.688rem);// 50-75
+  --margin-section-wave:  clamp(9.375rem, 8.854rem + 2.315vw, 10.938rem);// 150-175
+  --margin-section-wave-sp:  clamp(6.25rem, 5.729rem + 2.315vw, 7.813rem);// 100-125
+}
